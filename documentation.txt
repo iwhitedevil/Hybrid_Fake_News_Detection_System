@@ -1,0 +1,31 @@
+Hybrid Real-Time Fake News Detection System - ML AI Flask-based Application
+
+Introduction:
+The task was to create a hybrid real-time fake news detection system using machine learning and artificial intelligence. The system is implemented as a Flask-based web application with a user-friendly interface for interaction. The system goes through multiple steps, including dataset preparation, model training, clustering, web scraping, summarization, similarity calculations, and final article generation.
+
+1. Dataset Selection:
+An appropriate dataset was chosen for training the fake news detection model. The provided Kaggle dataset (https://www.kaggle.com/competitions/fake-news/data?select=train.csv) was used, which includes news articles with labels indicating their authenticity.
+
+2. Model Training:
+A Deep Neural Network (DNN) model was trained using the selected dataset. The features such as title, author, and text were used to predict the target label of fake or real news. The model's performance was evaluated by plotting a confusion matrix and calculating accuracy. Reference was taken from the Kaggle notebook (https://www.kaggle.com/code/barkhaverma/fake-news-detection/notebook).
+
+3. K-means Clustering and NLP:
+K-means clustering and Natural Language Processing (NLP) techniques were implemented to break down the news input into an optimal number of clusters. The Silhouette method was used to determine the optimal number of clusters. The clusters with different news parts were then extractive summarized using TFIDF vectorization and cosine similarity. Reference was taken from the provided code snippet for determining optimal clusters.
+
+4. Google Search:
+After clustering, the input news was split into headlines based on the optimal clusters and extractive summarization. Each headline was searched on Google using the "googlesearch" library to retrieve the top 5 website links as search results. Reference was taken from the provided code snippet for searching on Google.
+
+5. Web Scraping and Summarization:
+Web scraping libraries such as Beautiful Soup (bs4) were utilized to extract and summarize the content from the top 5 webpages. Extractive summarization techniques were applied using TFIDF vectorization and cosine similarity to generate concise summaries.
+
+6. Cosine and Jaccard Similarity:
+Cosine similarity and Jaccard similarity were calculated between the input news and the summarized content of the webpages. If the similarity exceeded 0.5 (50%), the news was classified as true. Otherwise, the algorithm proceeded to the next step.
+
+7. Fake News Detection:
+If the cosine and Jaccard similarity did not meet the threshold, the trained DNN model was applied to the input news. The model predicted whether the news was potentially true or 100% fake based on the model's prediction.
+
+8. Final Article Generation:
+Cosine and Jaccard similarity calculations were performed between the input news and the summarized content of the webpages on a sentence-by-sentence basis. Sentences with similarity scores exceeding 0.5 (50%) were filtered out. The remaining sentences were used to generate a final article.
+
+Conclusion:
+The hybrid real-time fake news detection system was successfully implemented as a Flask-based web application. It follows a multi-step process involving dataset selection, model training, clustering, web scraping, summarization, similarity calculations, and final article generation. The system provides an efficient and effective approach for detecting fake news in real-time, combining machine learning, artificial intelligence, and web scraping techniques.
